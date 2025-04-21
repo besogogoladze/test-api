@@ -1,11 +1,13 @@
-const express = require("express");
-const app = express();
-const port = 3000;
+var express = require("express");
+var cors = require("cors");
+var app = express();
 
-app.get("/", (req, res) => {
-  res.send({ message: "Hello World!" });
+app.use(cors());
+
+app.get("/products", function (req, res, next) {
+  res.json({ msg: "This is CORS-enabled for all origins!" });
 });
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+app.listen(80, function () {
+  console.log("CORS-enabled web server listening on port 80");
 });
